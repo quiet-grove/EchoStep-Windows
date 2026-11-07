@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f1e9">
+  <title>EchoStep · 初中英语听力练习</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="page-grain" aria-hidden="true"></div>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" id="brandHome" aria-label="返回首页">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M5 18v-4M10 22V10M15 26V6M20 21V11M25 18v-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-type"><strong>EchoStep</strong><small>英语听力工坊</small></span>
+      </a>
+      <nav class="topnav" aria-label="主导航">
+        <span class="api-pill" id="apiPill"><i></i><span>检查中</span></span>
+        <span class="debug-pill hidden" id="debugPill">DEBUG</span>
+        <button type="button" class="ghost-btn hidden" id="openBrowserBtn">浏览器打开</button>
+        <button type="button" class="ghost-btn" id="historyBtn">历史</button>
+        <button type="button" class="ghost-btn" id="settingsBtn">设置</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="view" id="homeView">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span></span> TEMPLATE A · 30 POINTS</div>
+            <h1>把课本，<br><em>变成一场听力考试。</em></h1>
+            <p class="hero-sub">按《听力模板 A》出题：5 节 30 题，选词、短对话、长对话、短文、填词。整套音频含英文麦克风试音，开始后不可回放。</p>
+            <div class="hero-tags"><span>人教版 Go for it!</span><span>七 · 八 · 九年级</span><span>30 题 / 30 分</span></div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="vinyl"><div class="vinyl-label"><span>EN</span><strong>LISTEN</strong><small>Template A · 19 min</small></div></div>
+            <div class="floating-card">
+              <div class="wave-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="floating-text"><small>NOW PLAYING</small><strong>Exam Audio · No Replay</strong></div>
+              <span class="floating-time">MIC</span>
+            </div>
+            <span class="hero-stamp">ONE<br>TAKE</span>
+          </div>
+        </div>
+
+        <div class="setup-layout">
+          <section class="panel setup-panel">
+            <div class="panel-heading">
+              <div class="heading-left"><span class="step-no">01</span><div><h2>选择考试范围</h2><p>年级不同，词汇、语法和题型边界也不同</p></div></div>
+              <span class="soft-note">年级即难度 · 严格不超纲</span>
+            </div>
+            <div class="grade-grid" id="gradeGrid" role="group" aria-label="选择年级"></div>
+            <div class="field-row">
+              <label class="field book-field"><span>册</span><select id="bookSelect"></select></label>
+              <label class="field grow"><span>单元</span><select id="unitSelect"></select></label>
+            </div>
+            <div class="scope-note" id="scopeNote"></div>
+
+            <div class="template-summary">
+              <div class="template-badge">TEMPLATE A</div>
+              <div class="template-copy"><strong>30 题 · 30 分 · 5 节</strong><span>1–5 辨音选词 · 6–10 短对话 · 11–20 长对话 · 21–25 短文 · 26–30 填词（听三遍）</span></div>
+            </div>
+
+            <div class="divider"></div>
+            <div class="panel-heading compact">
+              <div class="heading-left"><span class="step-no">02</span><div><h2>设置这场练习</h2><p>按模板出题，听力只播一次</p></div></div>
+            </div>
+
+            <div class="settings-grid template-settings">
+              <label class="field speed-field">
+                <span>语速 <b id="speedValue">1.0×</b><small>模板建议 110 词/分钟</small></span>
+                <input type="range" id="speedRange" min="0.6" max="1.5" step="0.05" value="1">
+                <div class="range-marks"><span>慢</span><span>正常</span><span>快</span></div>
+              </label>
+              <label class="field voice-field"><span>音色</span><select id="voiceSelect"></select></label>
+            </div>
+            <label class="field topic-field"><span>自定义主题 <small>可选</small></span><input type="text" id="topicInput" maxlength="120" placeholder="例如：校园运动会、周末计划、一次难忘的旅行……"></label>
+
+            <div class="feature-row">
+              <label class="switch-line web-line"><span class="switch"><input type="checkbox" id="webSearchToggle" checked><i></i></span><span><strong>联网搜索最新素材</strong><small>调用 DeepSeek 官方 Search API，让话题更新鲜</small></span></label>
+              <span class="search-tag">Official Search</span>
+            </div>
+            <div class="feature-row soundcheck-row">
+              <label class="switch-line web-line"><span class="switch"><input type="checkbox" id="soundcheckToggle" checked><i></i></span><span><strong>包含英文试音</strong><small>麦克风测试 → 开始考试</small></span></label>
+              <span class="search-tag">MIC TEST</span>
+            </div>
+
+            <div class="generate-row"><button type="button" class="primary-btn generate-btn" id="generateBtn">生成模板 A 试卷</button></div>
+            <p class="fineprint">生成约需 1–3 分钟 · 30 题 · 交卷后自动批改</p>
+          </section>
+
+          <aside class="side-stack">
+            <section class="panel api-card" id="apiCard"></section>
+            <section class="panel tts-card" id="ttsCard"></section>
+            <section class="panel how-card">
+              <div class="mini-title">考试规则</div>
+              <ol class="how-list">
+                <li><span>1</span><p><strong>听力只播一次</strong><small>点击开始后不能暂停、拖动或回放</small></p></li>
+                <li><span>2</span><p><strong>按节作答</strong><small>音频里只读指令和材料，不读题干</small></p></li>
+                <li><span>3</span><p><strong>可退出</strong><small>退出时可以选择是否批改已选题目</small></p></li>
+              </ol>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view hidden" id="examView">
+        <div class="exam-topbar">
+          <button type="button" class="back-btn" id="backHomeBtn">← 退出</button>
+          <div class="exam-title-block"><span id="examKicker">模板 A · 30 题</span><h1 id="examTitle">听力试卷</h1></div>
+          <div class="exam-actions">
+            <div class="exam-speed"><span>语速</span><b id="examSpeedLabel">1.0×</b></div>
+            <span class="timer" id="timer">00:00</span>
+            <button type="button" class="small-primary" id="exitExamBtn">退出考试</button>
+            <button type="button" class="small-primary" id="submitTopBtn">交卷</button>
+          </div>
+        </div>
+        <div class="search-note hidden" id="searchNote"></div>
+
+        <section class="full-audio-panel" id="fullAudioPanel">
+          <div class="full-audio-head">
+            <div><span class="full-badge"><i></i> 试音 + 整套试卷</span><h2>考试音频</h2><p>按《听力原文模板》播放：英文麦克风试音 → 5 节材料。开始后不可回放，除非启动时加 --debug。</p></div>
+            <span class="full-duration" id="fullDuration">--:--</span>
+          </div>
+          <div class="full-player">
+            <button type="button" class="play-btn full-play-btn" id="fullPlayBtn" aria-label="播放整套考试音频">▶</button>
+            <div class="full-body">
+              <div class="full-meta"><span id="fullAudioStatus">正在准备整套音频…</span><span id="fullAudioTime">00:00 / --:--</span></div>
+              <div class="audio-track"><div class="audio-progress" id="fullProgress"></div><input class="audio-range" id="fullRange" type="range" min="0" max="100" value="0" step="0.1" aria-label="整套音频进度"></div>
+              <div class="full-foot"><span id="audioRule">考试模式：开始后不可暂停/拖动/回放</span><span class="full-speed">语速 <b id="fullSpeedValue">1.0×</b></span></div>
+            </div>
+          </div>
+          <p class="full-tip" id="fullAudioTip">首次生成 30 题整套音频需要较长时间；生成后会缓存。</p>
+        </section>
+
+        <div class="exam-layout">
+          <div class="section-list" id="sectionList"></div>
+          <aside class="panel answer-panel">
+            <div class="answer-head"><h3>答题卡</h3><span id="answeredCount">0 / 30</span></div>
+            <div class="answer-grid" id="answerGrid"></div>
+            <div class="answer-legend"><span><i class="dot done"></i>已答</span><span><i class="dot"></i>未答</span></div>
+            <button type="button" class="primary-btn full" id="submitBtn">交卷并查看解析</button>
+            <p class="answer-tip">交卷后才会显示正确答案、解析和听力原文。</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view hidden" id="resultView">
+        <div class="result-hero">
+          <div class="score-ring" id="scoreRing"><div class="score-inner"><strong id="scoreNum">0</strong><span id="scoreTotal">/ 30</span></div></div>
+          <div class="result-copy">
+            <div class="eyebrow"><span></span> RESULT</div>
+            <h1 id="resultTitle">做得不错。</h1>
+            <p id="resultMsg">看看错题，再听一遍关键句。</p>
+            <div class="result-stats"><div><strong id="statCorrect">0</strong><span>答对</span></div><div><strong id="statWrong">0</strong><span>答错</span></div><div><strong id="statPercent">0%</strong><span>正确率</span></div><div><strong id="statTime">00:00</strong><span>用时</span></div></div>
+            <div class="result-actions"><button type="button" class="primary-btn" id="newTestBtn">再来一套</button><button type="button" class="text-btn" id="resultHomeBtn">回到首页</button></div>
+          </div>
+        </div>
+        <div class="result-layout">
+          <div class="result-sections" id="resultSections"></div>
+          <aside class="panel result-side">
+            <div class="answer-head"><h3>答题卡</h3><span id="resultScorePill">0 / 30</span></div>
+            <div class="answer-grid result-grid" id="resultGrid"></div>
+            <div class="answer-legend"><span><i class="dot right"></i>正确</span><span><i class="dot wrong"></i>错误</span></div>
+            <button type="button" class="secondary-btn full" id="toggleTranscriptBtn">展开全部原文</button>
+            <p class="answer-tip">建议把错题所在段落再盲听一遍，然后跟读原文。</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><span>EchoStep · 模板 A 听力练习</span><span>DeepSeek 命题 + 在线/本地 TTS</span></footer>
+  </div>
+
+  <div class="overlay hidden" id="loadingOverlay" role="status" aria-live="polite">
+    <div class="loading-card"><div class="loading-orbit"><span></span><span></span><span></span><i></i></div><h2 id="loadingTitle">正在准备试卷</h2><p id="loadingText">正在按模板 A 命题…</p><div class="loading-bar"><i></i></div><small>DeepSeek 正在生成 30 题，通常需要 1–3 分钟</small></div>
+  </div>
+
+  <div class="modal hidden" id="settingsModal" role="dialog" aria-modal="true">
+    <div class="modal-card settings-card">
+      <header class="modal-head"><div><span class="eyebrow"><span></span> SETTINGS</span><h2>设置</h2></div><button type="button" class="icon-btn" data-close="settingsModal">×</button></header>
+      <div class="modal-body">
+        <section class="settings-section">
+          <h3>DeepSeek API</h3>
+          <label class="field"><span>API Key <small id="keySource"></small></span><div class="key-input"><input type="password" id="settingKey" autocomplete="off" placeholder="sk-……"><button type="button" class="text-btn" id="toggleKeyBtn">显示</button></div></label>
+          <p class="field-help">密钥只保存在本机 <code>data/config.json</code>。也可用环境变量 <code>DEEPSEEK_API_KEY</code>。</p>
+          <div class="field-row"><label class="field"><span>模型</span><select id="settingModel"></select></label><label class="field grow"><span>API 地址</span><input type="url" id="settingBase" placeholder="https://api.deepseek.com"></label></div>
+          <label class="check-line"><input type="checkbox" id="settingThinking"> 深度思考（更慢）</label>
+          <div class="inline-actions"><button type="button" class="secondary-btn small" id="testConnectionBtn">测试连接</button><span class="inline-result" id="connectionResult"></span><button type="button" class="text-btn danger-text" id="clearKeyBtn">清除本机密钥</button></div>
+        </section>
+        <section class="settings-section">
+          <h3>考试音频</h3>
+          <p class="field-help">模板 A 默认不朗读题干和选项；音频格式由《听力原文模板》固定的节指令、两遍材料和作答停顿组成。</p>
+          <label class="check-line"><input type="checkbox" id="settingSoundcheck"> 包含英文试音</label>
+          <label class="check-line"><input type="checkbox" id="settingWebSearch"> 默认联网搜索最新素材</label>
+          <div class="cache-row"><span>音频缓存 <b id="cacheInfo">0 MB</b></span><button type="button" class="text-btn" id="clearCacheBtn">清除缓存</button></div>
+        </section>
+      </div>
+      <footer class="modal-foot"><button type="button" class="text-btn" id="resetSettingsBtn">恢复默认</button><div class="modal-foot-right"><button type="button" class="secondary-btn" data-close="settingsModal">取消</button><button type="button" class="primary-btn" id="saveSettingsBtn">保存设置</button></div></footer>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="historyModal" role="dialog" aria-modal="true">
+    <div class="modal-card history-card">
+      <header class="modal-head"><div><span class="eyebrow"><span></span> ARCHIVE</span><h2>历史试卷</h2></div><button type="button" class="icon-btn" data-close="historyModal">×</button></header>
+      <div class="modal-body"><div class="history-list" id="historyList"></div></div>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="exitModal" role="dialog" aria-modal="true" aria-labelledby="exitTitle">
+    <div class="modal-card confirm-card">
+      <h2 id="exitTitle">退出考试？</h2>
+      <p id="exitMessage">听力开始后不可回放。退出后可以选择是否批改已选题目。</p>
+      <div class="exit-actions"><button type="button" class="primary-btn" id="exitGradeBtn">批改已选并退出</button><button type="button" class="secondary-btn" id="exitDirectBtn">直接退出</button><button type="button" class="text-btn" id="exitCancelBtn">继续考试</button></div>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="confirmModal" role="dialog" aria-modal="true">
+    <div class="modal-card confirm-card"><h2 id="confirmTitle">确认交卷？</h2><p id="confirmMessage"></p><div class="confirm-actions"><button type="button" class="secondary-btn" id="confirmCancel">再检查一下</button><button type="button" class="primary-btn" id="confirmOk">确认</button></div></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
