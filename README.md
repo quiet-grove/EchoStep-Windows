@@ -66,7 +66,7 @@ run.bat --debug
 run.bat --browser
 ```
 
-直接用默认浏览器打开。`desktop.py` 是窗口入口；`app.py` 仍保留原来的纯浏览器/服务器模式。
+直接用默认浏览器打开。`desktop.py` 是窗口入口；`app.py` 仍可作为纯服务器运行（`python app.py --browser` 才打开浏览器）。
 
 打包好的免 Python 环境版本在 [Releases](https://github.com/quiet-grove/EchoStep-Windows/releases/latest)（`EchoStep-Windows-1.0.zip`，解压后运行 `EchoStep.exe`）。
 

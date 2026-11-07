@@ -674,7 +674,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="EchoStep 初中英语听力练习")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8765)
-    parser.add_argument("--no-browser", action="store_true")
+    parser.add_argument("--browser", action="store_true", help="启动后打开默认浏览器")
+    parser.add_argument("--no-browser", action="store_true", help="兼容旧参数；默认已不打开浏览器")
     parser.add_argument("--data-dir", type=Path, default=None)
     parser.add_argument("--debug", action="store_true", help="允许回放和拖动听力音频")
     args = parser.parse_args()
@@ -693,7 +694,7 @@ def main() -> None:
     print(f"  模式：{'DEBUG（可回放/拖动）' if app.debug else '考试模式（听力不可回放）'}")
     print("  按 Ctrl+C 停止")
     print("=" * 58)
-    if not args.no_browser:
+    if args.browser:
         threading.Timer(0.8, lambda: webbrowser.open(url)).start()
     try:
         server.serve_forever()
