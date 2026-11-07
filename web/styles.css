@@ -788,7 +788,7 @@ input[type="range"]::-moz-range-thumb { width: 17px; height: 17px; border-radius
   .score-inner strong { font-size: 37px; }
 }
 
-/* ------------------------------------------------------- template A extras */
+/* ------------------------------------------------------- 30-question extras */
 .debug-pill {
   display: inline-flex; align-items: center; height: 28px; padding: 0 9px;
   border-radius: 99px; background: #f3d8c7; color: #8f3f1f;

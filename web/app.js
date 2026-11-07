@@ -305,7 +305,7 @@ function renderApiCard() {
   } else {
     card.className = 'panel api-card';
     card.innerHTML = `<div class="api-kicker"><span>DEEPSEEK API</span><i class="api-status-dot"></i></div>
-      <h3>先填入你的 API Key</h3><p>使用 DeepSeek 官方 API 按模板 A 自主出卷。密钥保存在本机。</p>
+      <h3>先填入你的 API Key</h3><p>使用 DeepSeek 官方 API 按听力卷标准 自主出卷。密钥保存在本机。</p>
       <button type="button" class="primary-btn" id="setupKeyBtn">填写密钥</button>`;
     $('#setupKeyBtn')?.addEventListener('click', () => { openSettings(); setTimeout(() => $('#settingKey')?.focus(), 80); });
   }
@@ -327,7 +327,7 @@ function renderTtsCard() {
 
 /* --------------------------------------------------------------- generation */
 function showLoading() {
-  const messages = ['正在按模板 A 命题…', state.webSearch ? '正在联网检索素材…' : '正在整理教材单元…', '正在生成 30 题、5 节的音频文本…', '正在校验题号、选项和答案…'];
+  const messages = ['正在按听力卷命题…', state.webSearch ? '正在联网检索素材…' : '正在整理教材单元…', '正在生成 30 题、5 节的音频文本…', '正在校验题号、选项和答案…'];
   let index = 0;
   $('#loadingText').textContent = messages[0];
   $('#loadingOverlay').classList.remove('hidden');
@@ -959,14 +959,14 @@ async function openHistory() {
     const data = await api('/api/history');
     const items = data.items || [];
     if (!items.length) {
-      list.innerHTML = '<div class="empty-state"><strong>还没有试卷</strong>按模板 A 生成第一套听力练习。</div>';
+      list.innerHTML = '<div class="empty-state"><strong>还没有试卷</strong>按听力卷标准 生成第一套听力练习。</div>';
       return;
     }
     list.innerHTML = items.map((item) => {
       const date = formatHistoryDate(item.created_at);
       return `<button type="button" class="history-item" data-test-id="${escapeAttr(item.id)}">
         <span class="history-date"><strong>${date.day}</strong><small>${date.month}</small></span>
-        <span class="history-info"><strong>${escapeHTML(item.title)}</strong><small>${escapeHTML(item.grade)}${escapeHTML(item.book)} · ${item.question_count || 30} 题 · 模板 A</small></span>
+        <span class="history-info"><strong>${escapeHTML(item.title)}</strong><small>${escapeHTML(item.grade)}${escapeHTML(item.book)} · ${item.question_count || 30} 题 · 听力卷</small></span>
         <span>${escapeHTML(item.model || '')}</span></button>`;
     }).join('');
   } catch (error) {
@@ -1108,7 +1108,7 @@ async function boot() {
     const data = await api('/api/state');
     applyServerState(data, { first: true });
     renderHome();
-    if (!state.config.has_key) showToast('先填写 DeepSeek API Key，再按模板 A 出卷', 'warn', 5600);
+    if (!state.config.has_key) showToast('先填写 DeepSeek API Key，再按听力卷标准 出卷', 'warn', 5600);
   } catch (error) {
     showToast(error.message || '应用启动失败，请刷新页面', 'err', 8000);
   }

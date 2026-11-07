@@ -183,7 +183,7 @@ class PromptTests(unittest.TestCase):
         )
         system = messages[0]["content"]
         user = messages[1]["content"]
-        self.assertIn("模板 A", system)
+        self.assertIn("听力卷", system)
         self.assertIn("第一节", system)
         self.assertIn("第五节", system)
         self.assertIn("不朗读题干", system)

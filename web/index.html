@@ -31,15 +31,15 @@
       <section class="view" id="homeView">
         <div class="hero">
           <div class="hero-copy">
-            <div class="eyebrow"><span></span> TEMPLATE A · 30 POINTS</div>
+            <div class="eyebrow"><span></span> 30 QUESTIONS · 5 SECTIONS · 30 POINTS</div>
             <h1>把课本，<br><em>变成一场听力考试。</em></h1>
-            <p class="hero-sub">按《听力模板 A》出题：5 节 30 题，选词、短对话、长对话、短文、填词。整套音频含英文麦克风试音，开始后不可回放。</p>
+            <p class="hero-sub">按30 题 / 5 节标准出题：5 节 30 题，选词、短对话、长对话、短文、填词。整套音频含英文麦克风试音，开始后不可回放。</p>
             <div class="hero-tags"><span>人教版 Go for it!</span><span>七 · 八 · 九年级</span><span>30 题 / 30 分</span></div>
           </div>
           <div class="hero-art" aria-hidden="true">
             <div class="orbit orbit-one"></div>
             <div class="orbit orbit-two"></div>
-            <div class="vinyl"><div class="vinyl-label"><span>EN</span><strong>LISTEN</strong><small>Template A · 19 min</small></div></div>
+            <div class="vinyl"><div class="vinyl-label"><span>EN</span><strong>LISTEN</strong><small>30 Questions · 5 Sections · 19 min</small></div></div>
             <div class="floating-card">
               <div class="wave-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
               <div class="floating-text"><small>NOW PLAYING</small><strong>Exam Audio · No Replay</strong></div>
@@ -63,7 +63,7 @@
             <div class="scope-note" id="scopeNote"></div>
 
             <div class="template-summary">
-              <div class="template-badge">TEMPLATE A</div>
+              <div class="template-badge">30 QUESTIONS · 5 SECTIONS</div>
               <div class="template-copy"><strong>30 题 · 30 分 · 5 节</strong><span>1–5 辨音选词 · 6–10 短对话 · 11–20 长对话 · 21–25 短文 · 26–30 填词（听三遍）</span></div>
             </div>
 
@@ -91,7 +91,7 @@
               <span class="search-tag">MIC TEST</span>
             </div>
 
-            <div class="generate-row"><button type="button" class="primary-btn generate-btn" id="generateBtn">生成模板 A 试卷</button></div>
+            <div class="generate-row"><button type="button" class="primary-btn generate-btn" id="generateBtn">生成听力试卷</button></div>
             <p class="fineprint">生成约需 1–3 分钟 · 30 题 · 交卷后自动批改</p>
           </section>
 
@@ -113,7 +113,7 @@
       <section class="view hidden" id="examView">
         <div class="exam-topbar">
           <button type="button" class="back-btn" id="backHomeBtn">← 退出</button>
-          <div class="exam-title-block"><span id="examKicker">模板 A · 30 题</span><h1 id="examTitle">听力试卷</h1></div>
+          <div class="exam-title-block"><span id="examKicker">30 题 / 30 分</span><h1 id="examTitle">听力试卷</h1></div>
           <div class="exam-actions">
             <div class="exam-speed"><span>语速</span><b id="examSpeedLabel">1.0×</b></div>
             <span class="timer" id="timer">00:00</span>
@@ -174,11 +174,11 @@
         </div>
       </section>
     </main>
-    <footer class="footer"><span>EchoStep · 模板 A 听力练习</span><span>DeepSeek 命题 + 在线/本地 TTS</span></footer>
+    <footer class="footer"><span>EchoStep · 听力练习</span><span>DeepSeek 命题 + 在线/本地 TTS</span></footer>
   </div>
 
   <div class="overlay hidden" id="loadingOverlay" role="status" aria-live="polite">
-    <div class="loading-card"><div class="loading-orbit"><span></span><span></span><span></span><i></i></div><h2 id="loadingTitle">正在准备试卷</h2><p id="loadingText">正在按模板 A 命题…</p><div class="loading-bar"><i></i></div><small>DeepSeek 正在生成 30 题，通常需要 1–3 分钟</small></div>
+    <div class="loading-card"><div class="loading-orbit"><span></span><span></span><span></span><i></i></div><h2 id="loadingTitle">正在准备试卷</h2><p id="loadingText">正在按听力卷命题…</p><div class="loading-bar"><i></i></div><small>DeepSeek 正在生成 30 题，通常需要 1–3 分钟</small></div>
   </div>
 
   <div class="modal hidden" id="settingsModal" role="dialog" aria-modal="true">
@@ -195,7 +195,7 @@
         </section>
         <section class="settings-section">
           <h3>考试音频</h3>
-          <p class="field-help">模板 A 默认不朗读题干和选项；音频格式由《听力原文模板》固定的节指令、两遍材料和作答停顿组成。</p>
+          <p class="field-help">默认不朗读题干和选项；音频格式由《听力原文模板》固定的节指令、两遍材料和作答停顿组成。</p>
           <label class="check-line"><input type="checkbox" id="settingSoundcheck"> 包含英文试音</label>
           <label class="check-line"><input type="checkbox" id="settingWebSearch"> 默认联网搜索最新素材</label>
           <div class="cache-row"><span>音频缓存 <b id="cacheInfo">0 MB</b></span><button type="button" class="text-btn" id="clearCacheBtn">清除缓存</button></div>

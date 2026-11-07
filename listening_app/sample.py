@@ -1,4 +1,4 @@
-"""内置模板 A 示例卷（直接取 Prompt 中的完整 30 题示例）。"""
+"""内置听力卷 示例卷（直接取 Prompt 中的完整 30 题示例）。"""
 
 from __future__ import annotations
 

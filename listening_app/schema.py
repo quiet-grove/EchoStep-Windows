@@ -1,4 +1,4 @@
-"""模板 A 试卷结构校验、公开版与批改结果。"""
+"""听力试卷结构校验、公开版与批改结果。"""
 
 from __future__ import annotations
 
@@ -132,7 +132,7 @@ def normalize_test(obj: dict, *, request: dict, count: int = 30) -> dict:
         raise ValidationError("模型返回的不是 JSON 对象")
     raw_sections = obj.get("sections")
     if not isinstance(raw_sections, list) or len(raw_sections) != 5:
-        raise ValidationError("模板 A 必须有且只有 5 节")
+        raise ValidationError("听力卷必须有且只有 5 节")
 
     sections: list[dict] = []
     question_no = 0
@@ -305,7 +305,7 @@ def normalize_test(obj: dict, *, request: dict, count: int = 30) -> dict:
         )
 
     if question_no != 30:
-        raise ValidationError(f"模板 A 必须是 30 题，实际生成 {question_no} 题")
+        raise ValidationError(f"听力卷必须是 30 题，实际生成 {question_no} 题")
 
     table_section = sections[-1]
     if table_section["type"] == "table_fill" and table_section["table"]:
@@ -317,7 +317,7 @@ def normalize_test(obj: dict, *, request: dict, count: int = 30) -> dict:
     unit_title = request.get("unit_title") or "听力练习"
     title = str(obj.get("title") or "").strip()
     if not title or len(title) > 80:
-        title = f"{request.get('grade', '')}{request.get('book', '')} {unit_title} 听力试卷（模板 A）"
+        title = f"{request.get('grade', '')}{request.get('book', '')} {unit_title} 听力试卷（听力卷）"
     topic = str(obj.get("topic") or request.get("topic") or "").strip()
 
     return {

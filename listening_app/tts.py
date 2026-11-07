@@ -144,7 +144,7 @@ def build_exam_segments(
     soundcheck: bool = True,
     read_options: bool = False,
 ) -> list[Segment]:
-    """Template A audio: soundcheck, section instructions, materials, pauses.
+    """30 Questions · 5 Sections audio: soundcheck, section instructions, materials, pauses.
 
     Per the supplied listening script, questions and options are NOT read.
     """

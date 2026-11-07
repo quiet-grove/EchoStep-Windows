@@ -1,12 +1,12 @@
 # EchoStep Windows 版 · 初中英语听力练习
 
-Windows 桌面版：填入 DeepSeek API Key，选择年级/册/单元，AI 按《听力模板 A》自主出 30 题、5 节的听力卷；本地 TTS 朗读；交卷自动批改，显示分数、解析和原文。
+Windows 桌面版：填入 DeepSeek API Key，选择年级/册/单元，AI 按30 题 / 5 节标准自主出 30 题、5 节的听力卷；本地 TTS 朗读；交卷自动批改，显示分数、解析和原文。
 
 > 本目录：`D:\dsh-work\English\windows`。Android 版见 [`EchoStep-Android`](https://github.com/quiet-grove/EchoStep-Android)。
 >
 > 出题模板：[`听力模板.md`](听力模板.md)；录音格式：[`听力原文模板.md`](听力原文模板.md)。
 
-## 模板 A 结构
+## 30 题结构
 
 | 节 | 题号 | 题型 | 分值 |
 | --- | --- | --- | --- |
@@ -78,7 +78,7 @@ http://127.0.0.1:8765
 
 1. 右上角 **设置** → 填 DeepSeek API Key → 测试连接 → 保存。
 2. 选择年级、册、单元（可选填主题）。
-3. 点 **生成模板 A 试卷**。
+3. 点 **生成听力试卷**。
 4. 进入试卷后等整套音频准备好，点播放开始考试。
 5. 交卷，或退出时选择批改已选题目。
 
@@ -119,7 +119,7 @@ windows/
 ├─ run.bat                    # 双击启动
 ├─ setup.bat                  # 首次安装/修复环境
 ├─ listening_app/
-│  ├─ prompts.py              # 模板 A 命题 Prompt
+│  ├─ prompts.py              # 听力卷命题 Prompt
 │  ├─ schema.py               # 30 题结构校验、公开版、填词批改
 │  ├─ tts.py                  # 模板音频脚本 + Piper/Edge/SAPI
 │  ├─ deepseek.py             # Chat Completions + 官方 Search API
@@ -144,7 +144,7 @@ windows/
 
 当前 **35 个测试**覆盖：
 
-- 模板 A 的 5 节/30 题结构、第一节 3 个易混词、其余 3 个选项、5 个填词；
+- 听力卷的 5 节/30 题结构、第一节 3 个易混词、其余 3 个选项、5 个填词；
 - 纯英文材料校验、题号连续性、信息表题号一致性；
 - 公开版不泄露答案/解析/原文；
 - 选择题和填词题批改（大小写、空格、空题）；
@@ -165,7 +165,7 @@ windows/
 
 ## Android 版本
 
-Android 版在 [`EchoStep-Android`](https://github.com/quiet-grove/EchoStep-Android)，已同步模板 A，并集成 Edge 优先 / ncnn 本地兜底。
+Android 版在 [`EchoStep-Android`](https://github.com/quiet-grove/EchoStep-Android)，已同步听力卷，并集成 Edge 优先 / ncnn 本地兜底。
 
 ## 参考
 
