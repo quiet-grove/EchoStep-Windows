@@ -6,8 +6,6 @@ Windows 桌面版：填入 DeepSeek API Key，选择年级/册/单元，AI 按�
 >
 > 出题模板：[`听力模板.md`](听力模板.md)；录音格式：[`听力原文模板.md`](听力原文模板.md)。
 
-![模板 A 首页](screenshots/home.png)
-
 ## 模板 A 结构
 
 | 节 | 题号 | 题型 | 分值 |
